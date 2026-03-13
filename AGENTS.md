@@ -15,14 +15,9 @@ Code review tool with a "roast" twist. Users paste code, receive brutally honest
 
 ```
 src/
-├── app/                  # Next.js App Router pages
-│   ├── layout.tsx        # Root layout (fonts + shared Navbar)
-│   ├── page.tsx          # Homepage (code input + leaderboard preview)
-│   ├── globals.css       # Tailwind v4 theme (all design tokens)
-│   └── design-system/    # Component showcase page
-├── components/ui/        # Reusable UI components
-│   └── AGENTS.md         # Component-specific standards
-└── lib/utils.ts          # cn() utility (clsx + twMerge)
+├── app/              # Next.js App Router pages and layouts
+├── components/ui/    # Reusable UI components (see AGENTS.md inside)
+└── lib/              # Shared utilities
 ```
 
 ## Key Patterns

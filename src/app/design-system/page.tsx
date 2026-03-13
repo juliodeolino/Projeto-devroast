@@ -1,16 +1,34 @@
-import { Badge } from "@/components/ui/badge";
+import { Badge, BadgeDot } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
-import { DiffLine, DiffViewer } from "@/components/ui/diff";
-import { ScoreRing } from "@/components/ui/score-ring";
+import {
+  CodeBlock,
+  CodeBlockCode,
+  CodeBlockContent,
+  CodeBlockDots,
+  CodeBlockFileName,
+  CodeBlockHeader,
+  CodeBlockLineNumbers,
+} from "@/components/ui/code-block";
+import {
+  DiffLine,
+  DiffLineContent,
+  DiffLineNumber,
+  DiffViewer,
+} from "@/components/ui/diff";
+import {
+  ScoreRing,
+  ScoreRingIndicator,
+  ScoreRingLabel,
+  ScoreRingSvg,
+  ScoreRingTrack,
+} from "@/components/ui/score-ring";
 import { Switch } from "@/components/ui/switch";
 import {
   Table,
@@ -20,6 +38,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+
+const exampleCode = `function hello() {
+  console.log("Hello, world!");
+}`;
 
 export default function DesignSystemPage() {
   return (
@@ -119,13 +141,34 @@ export default function DesignSystemPage() {
           Badges
         </h2>
         <div className="flex flex-wrap gap-4">
-          <Badge variant="critical">Critical</Badge>
-          <Badge variant="warning">Warning</Badge>
-          <Badge variant="good">Good</Badge>
-          <Badge variant="neutral">Neutral</Badge>
-          <Badge>Default</Badge>
-          <Badge variant="secondary">Secondary</Badge>
-          <Badge variant="outline">Outline</Badge>
+          <Badge variant="critical">
+            <BadgeDot variant="critical" />
+            Critical
+          </Badge>
+          <Badge variant="warning">
+            <BadgeDot variant="warning" />
+            Warning
+          </Badge>
+          <Badge variant="good">
+            <BadgeDot variant="good" />
+            Good
+          </Badge>
+          <Badge variant="neutral">
+            <BadgeDot variant="neutral" />
+            Neutral
+          </Badge>
+          <Badge>
+            <BadgeDot />
+            Default
+          </Badge>
+          <Badge variant="secondary">
+            <BadgeDot variant="secondary" />
+            Secondary
+          </Badge>
+          <Badge variant="outline">
+            <BadgeDot variant="outline" />
+            Outline
+          </Badge>
         </div>
       </section>
 
@@ -157,13 +200,18 @@ export default function DesignSystemPage() {
           Code Block
         </h2>
         <div className="w-full max-w-2xl">
-          <CodeBlock
-            code={`function hello() {
-  console.log("Hello, world!");
-}`}
-            lang="typescript"
-            fileName="example.ts"
-          />
+          <CodeBlock>
+            <CodeBlockHeader>
+              <CodeBlockDots />
+              <CodeBlockFileName>example.ts</CodeBlockFileName>
+            </CodeBlockHeader>
+            <CodeBlockContent>
+              <CodeBlockLineNumbers
+                count={exampleCode.trim().split("\n").length}
+              />
+              <CodeBlockCode code={exampleCode} lang="typescript" />
+            </CodeBlockContent>
+          </CodeBlock>
         </div>
       </section>
 
@@ -174,21 +222,26 @@ export default function DesignSystemPage() {
         </h2>
         <div className="w-full max-w-2xl">
           <DiffViewer>
-            <DiffLine
-              type="removed"
-              lineNumber={10}
-              content="- const user = await db.user.findFirst({ where: { id } });"
-            />
-            <DiffLine
-              type="added"
-              lineNumber={10}
-              content="+ const user = await db.user.findUnique({ where: { id } });"
-            />
-            <DiffLine
-              type="context"
-              lineNumber={11}
-              content="  if (!user) throw new Error('User not found');"
-            />
+            <DiffLine type="removed">
+              <DiffLineNumber>10</DiffLineNumber>
+              <DiffLineContent>
+                - const user = await db.user.findFirst({"{"} where: {"{"} id{" "}
+                {"}"} {"}"});
+              </DiffLineContent>
+            </DiffLine>
+            <DiffLine type="added">
+              <DiffLineNumber>10</DiffLineNumber>
+              <DiffLineContent>
+                + const user = await db.user.findUnique({"{"} where: {"{"} id{" "}
+                {"}"} {"}"});
+              </DiffLineContent>
+            </DiffLine>
+            <DiffLine type="context">
+              <DiffLineNumber>11</DiffLineNumber>
+              <DiffLineContent>
+                {"  "}if (!user) throw new Error(&apos;User not found&apos;);
+              </DiffLineContent>
+            </DiffLine>
           </DiffViewer>
         </div>
       </section>
@@ -227,15 +280,21 @@ export default function DesignSystemPage() {
         </div>
       </section>
 
-      {/* 9. Navbar (REMOVED as requested) */}
-
-      {/* 10. Score Ring */}
+      {/* 9. Score Ring */}
       <section className="space-y-6">
         <h2 className="text-2xl font-semibold tracking-tight border-b pb-2">
           Score Ring
         </h2>
         <div className="flex gap-8">
-          <ScoreRing score={92} total={100} size={180} />
+          <ScoreRing score={92} total={100} size={180}>
+            <ScoreRingSvg>
+              <ScoreRingTrack />
+              <ScoreRingIndicator />
+            </ScoreRingSvg>
+            <ScoreRingLabel>
+              <span className="text-4xl font-bold font-mono">92</span>
+            </ScoreRingLabel>
+          </ScoreRing>
         </div>
       </section>
     </div>
