@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-mono);
+  /* --font-sans will fallback to system font stack by default in Tailwind v4 if not overridden */
 }
