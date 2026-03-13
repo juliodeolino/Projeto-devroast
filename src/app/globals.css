@@ -1,6 +1,62 @@
 @import "tailwindcss";
 
 @theme {
+  /* Fonts */
   --font-mono: var(--font-mono);
-  /* --font-sans will fallback to system font stack by default in Tailwind v4 if not overridden */
+  --font-secondary: var(--font-secondary);
+
+  /* Color Palette - From Design */
+  --color-accent-green: #10b981;
+  --color-accent-red: #ef4444;
+  --color-accent-amber: #f59e0b;
+  --color-accent-blue: #3b82f6;
+
+  /* Background Colors */
+  --color-bg-page: #0a0a0a;
+  --color-bg-surface: #0f0f0f;
+  --color-bg-input: #111111;
+  --color-bg-elevated: #1a1a1a;
+
+  /* Text Colors */
+  --color-text-primary: #fafafa;
+  --color-text-secondary: #6b7280;
+  --color-text-tertiary: #4b5563;
+
+  /* Border Colors */
+  --color-border-primary: #1f1f1f;
+
+  /* Semantic Application Colors */
+  --color-background: #0a0a0a;
+  --color-foreground: #fafafa;
+
+  --color-card: #101010;
+  --color-card-foreground: #fafafa;
+
+  --color-popover: #0a0a0a;
+  --color-popover-foreground: #fafafa;
+
+  --color-primary: #ff8400;
+  --color-primary-foreground: #111111;
+
+  --color-secondary: #2e2e2e;
+  --color-secondary-foreground: #fafafa;
+
+  --color-muted: #2e2e2e;
+  --color-muted-foreground: #a1a1aa;
+
+  --color-accent: #2e2e2e;
+  --color-accent-foreground: #fafafa;
+
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #fafafa;
+
+  --color-border: #333333;
+  --color-input: #27272a;
+  --color-ring: #10b981;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
 }

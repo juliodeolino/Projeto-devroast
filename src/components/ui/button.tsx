@@ -3,18 +3,19 @@ import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 const buttonVariants = tv({
-  base: "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  base: "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   variants: {
     variant: {
       default:
-        "bg-[#10B981] text-[#0A0A0A] shadow hover:bg-[#10B981]/90 font-mono text-[13px]",
-      destructive: "bg-red-500 text-white shadow-sm hover:bg-red-500/90",
+        "bg-accent-green text-primary-foreground shadow enabled:hover:bg-accent-green/90 font-mono text-[13px]",
+      destructive:
+        "bg-accent-red text-destructive-foreground shadow-sm enabled:hover:bg-accent-red/90",
       outline:
-        "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+        "border border-input bg-background shadow-sm enabled:hover:bg-accent enabled:hover:text-accent-foreground",
       secondary:
-        "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
-      ghost: "hover:bg-accent hover:text-accent-foreground",
-      link: "text-primary underline-offset-4 hover:underline",
+        "bg-secondary text-secondary-foreground shadow-sm enabled:hover:bg-secondary/80",
+      ghost: "enabled:hover:bg-accent enabled:hover:text-accent-foreground",
+      link: "text-primary underline-offset-4 enabled:hover:underline",
     },
     size: {
       default: "h-auto px-6 py-2.5", // 24px horizontal, 10px vertical from design
