@@ -346,7 +346,7 @@ export { CodeEditorLangSelect, codeEditorLangSelectVariants };
 // ---------------------------------------------------------------------------
 
 const codeEditorContentVariants = tv({
-  base: "flex min-h-[360px]",
+  base: "flex min-h-[360px] max-h-[500px] overflow-y-auto",
 });
 
 export interface CodeEditorContentProps
